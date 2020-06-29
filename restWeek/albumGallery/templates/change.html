@@ -15,9 +15,9 @@
     }
 </style>
 <body>
-    <form action="{% url 'change' change_key.id %}" method="POST">
+    <form action="{% url 'change' change_key.id %}" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
-        <p>음악이름 : </p>
+        <p>음반이름 : </p>
         <input type="text" name="name" value="{{change_key.name}}">
         <p>가수이름 : </p>
         <input type="text" name="artist" value="{{change_key.artist}}">
@@ -30,7 +30,7 @@
         <p>세부사항 : </p>
         <input type="text" name="release" value="{{change_key.description}}">
         <p>엘범아트 삽입하기</p>
-        <img src="{{change_key.albumArt.url}}" style="width: 200px;" title="{{change_key.description}}">
+        <input type="file" name="albumArt" required>
         {{form.albumArt}}
         <input type="submit" value="수정하기">
     </form>   

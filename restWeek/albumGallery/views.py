@@ -14,15 +14,15 @@ def home(request):
 def add(request):
     form =crateForm()
     if request.method == "POST":
-        myAlbum = myAlbum()
-        myAlbum.name = request.POST['name']
-        myAlbum.artist = request.POST['artist']
-        myAlbum.release = request.POST['release']
-        myAlbum.playTime = request.POST['playTime']
-        myAlbum.genre = request.POST['genre']
-        myAlbum.albumArt = request.FILES['albumArt']
-        myAlbum.desription = request.POST['description']
-        myAlbum.save()
+        add_obj = myAlbum()
+        add_obj.name = request.POST['name']
+        add_obj.artist = request.POST['artist']
+        add_obj.release = request.POST['release']
+        add_obj.playTime = request.POST['playTime']
+        add_obj.genre = request.POST['genre']
+        add_obj.albumArt = request.FILES['albumArt']
+        add_obj.desription = request.POST['description']
+        add_obj.save()
         return redirect('home')
     else:
         pass

@@ -15,9 +15,9 @@
     }
 </style>
 <body>
-    <form action="{% url 'add' %}" method="POST">
+    <form action="{% url 'add' %}" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
-        <p>음악이름</p>
+        <p>음반이름</p>
         <input type="text" name="name">
         <p>가수이름</p>
         <input type="text" name="artist">
@@ -30,7 +30,7 @@
         <p>세부사항</p>
         <textarea cols=100 rows=10 name="description"></textarea>
         <p>엘범아트 삽입하기</p>
-        {{form.albumArt}}
+        <input type="file" name="albumArt" required>
         <input class="button" type="submit" value="추가하기">   
     </from>
 </body>

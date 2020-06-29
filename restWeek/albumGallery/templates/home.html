@@ -22,7 +22,7 @@
         <p>{{i.playTime}}</p>
         <p>{{i.genre}}</p>
         <p>{{i.desription}}</p>
-        <p><img src="{{myAlbum_obj.albumArt.url}}"></p>
+        <p><img src="{{i.albumArt.url}}"></p>
         
         <a href="{% url 'change' i.id %}">
             <button class="button" name="change">수정</button>
