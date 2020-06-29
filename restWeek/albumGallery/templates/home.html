@@ -16,20 +16,20 @@
 </style>
 <body>
     {% for i in myAlbum_obj.all %}
-    <h1>{{i.name}}</h1>
-    <p>{{i.artist}}</p>
-    <p>{{i.release}}</p>
-    <p>{{i.playTime}}</p>
-    <p>{{i.genre}}</p>
-    <p>{{i.desription}}</p>
-    <p><img src="{{myAlbum_obj.albumArt.url}}"></p>
-    
-    <a href="{% url 'change' i.id %}">
-        <button class="button" name="change">수정</button>
-    </a>
-    <a href="{% url 'delete' i.id %}">
-        <button class="button" name="delete">삭제</button>
-    </a>
+        <h1>{{i.name}}</h1>
+        <p>{{i.artist}}</p>
+        <p>{{i.release}}</p>
+        <p>{{i.playTime}}</p>
+        <p>{{i.genre}}</p>
+        <p>{{i.desription}}</p>
+        <p><img src="{{myAlbum_obj.albumArt.url}}"></p>
+        
+        <a href="{% url 'change' i.id %}">
+            <button class="button" name="change">수정</button>
+        </a>
+        <a href="{% url 'delete' i.id %}">
+            <button class="button" name="delete">삭제</button>
+        </a>
     {% endfor %}
     <a href="{% url 'add' %}">
         <button class="button" name="add">새로운 내용 입력하기</button>
