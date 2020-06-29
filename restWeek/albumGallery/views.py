@@ -9,7 +9,7 @@ from django.urls import reverse
 
 def home(request):
     myAlbum_obj = myAlbum.object
-    return render(request, 'home.html',{'myAlbum_obj' : myAlbum_obj})
+    return render(request, 'home.html',{'myAlbum_obj':myAlbum_obj})
 
 def add(request):
     form =crateForm()
