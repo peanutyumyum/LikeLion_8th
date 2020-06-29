@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', albumGallery.views.home, name='home'),
     path('add/', albumGallery.views.add, name="add"),
-    path('change/<int:change_id>', albumGallery.view.change, name="change"),
+    path('change/<int:change_id>', albumGallery.views.change, name="change"),
     path('delete/<int:delete_id>', albumGallery.views.delete, name ="delete"),
 ]
 
