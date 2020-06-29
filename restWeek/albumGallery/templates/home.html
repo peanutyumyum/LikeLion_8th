@@ -3,36 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/home.css">
     <title>엘범아트 전시</title>
 </head>
-<style>
-    body{
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
 <body>
     {% for i in myAlbum_obj.all %}
-        <h1>{{i.name}}</h1>
-        <p>{{i.artist}}</p>
-        <p>{{i.release}}</p>
-        <p>{{i.playTime}}</p>
-        <p>{{i.genre}}</p>
-        <p>{{i.desription}}</p>
-        <p><img src="{{i.albumArt.url}}"></p>
-        
-        <a href="{% url 'change' i.id %}">
-            <button class="button" name="change">수정</button>
-        </a>
-        <a href="{% url 'delete' i.id %}">
-            <button class="button" name="delete">삭제</button>
-        </a>
+        <div class="gallery" id="gallery" onmouseover="mover()" onmouseout="mount()"> <!-- onmouseover=마우스를 올리면 동작, onmouseout=마우스가 벗어나면 동작 -->
+            <p><img src="{{i.albumArt.url}}"></p>
+        </div>
+        <div class="information" id="information" >
+            <h1>{{i.name}}</h1>
+            <p>{{i.artist}}</p>
+            <p>{{i.release}}</p>
+            <p>{{i.playTime}}</p>
+            <p>{{i.genre}}</p>
+            <p>{{i.desription}}</p>
+        </div>
+        <div class="modify">
+            <a href="{% url 'change' i.id %}">
+                <button class="button" name="change">수정</button>
+            </a>
+            <a href="{% url 'delete' i.id %}">
+                <button class="button" name="delete">삭제</button>
+            </a>
+        </div>
     {% endfor %}
-    <a href="{% url 'add' %}">
-        <button class="button" name="add">새로운 내용 입력하기</button>
-    </a>
+    <br>
+    <div class="addModels">
+        <a href="{% url 'add' %}">
+            <button class="button" name="add">추가하기</button>
+        </a>
+    </div>
+<script type="text/javascript">
+function mover(){
+    var info = getElementById("information")
+    var action = document.getElementById("gallery");
+    info.style.display ='block';
+}
+function mount(){
+    var info = getElementById("information")
+    var action = document.getElementById("gallery");
+    info.style.display ='none';
+}
+</script>
 </body>
 </html>

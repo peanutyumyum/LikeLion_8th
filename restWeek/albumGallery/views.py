@@ -32,13 +32,14 @@ def change(request, change_id):
     change_obj = get_object_or_404(myAlbum, pk=change_id)
     form =crateForm()
     if request.method == "POST":
-        myAlbum.name = request.POST['name']
-        myAlbum.artist = request.POST['artist']
-        myAlbum.release = request.POST['release']
-        myAlbum.playTime = request.POST['playTime']
-        myAlbum.genre = request.POST['genre']
-        myAlbum.albumArt = request.FILES['albumArt']
-        myAlbum.desription = request.POST['description']
+        change_obj = myAlbum()
+        change_obj.name = request.POST['name']
+        change_obj.artist = request.POST['artist']
+        change_obj.release = request.POST['release']
+        change_obj.playTime = request.POST['playTime']
+        change_obj.genre = request.POST['genre']
+        change_obj.albumArt = request.FILES['albumArt']
+        change_obj.desription = request.POST['description']
         change_obj.save()
         return redirect(reverse('home'))
     else:
