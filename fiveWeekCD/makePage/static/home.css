@@ -1,0 +1,90 @@
+body{
+    background-color: #286ce6;
+}
+
+.channel{
+    background-color: #6495ed;
+    margin-top: 20px;
+    border: solid 2px white;
+    padding: 20px;
+    border-radius: 20px;
+    font-family: "함초롬바탕";
+}
+.live1-1{
+    position: relative;
+    top: 70px;
+    right: 50px;
+    width: 100px;
+    height: 70px;
+    border-radius: 15px;
+}
+.live1-2{
+    position: relative;
+    top: 70px;
+    right: 50px;
+    width: 10px;
+    height: 70px;
+    border-radius: 15px;
+}
+.video{
+    text-align: center;
+    letter-spacing: 50px; /* 글자간격을 설정 */
+}
+
+.channel2{
+    background-color: #6495ed;
+    margin-top: 20px;
+    border: solid 2px white;
+    padding: 20px;
+    border-radius: 20px;
+    font-family: "함초롬바탕"
+}
+.live2-1{
+    position: relative;
+    top: 610px;
+    right: 50px;
+    width: 100px;
+    height: 70px;
+    border-radius: 15px;
+}
+.live2-2{
+    position: relative;
+    top: 610px;
+    right: 50px;
+    width: 100px;
+    height: 70px;
+    border-radius: 15px;
+}
+.video2{
+    text-align: center;
+    letter-spacing: 50px; /* 글자간격을 설정 */
+}
+
+.channel3{
+    background-color: #6495ed;
+    margin-top: 20px;
+    border: solid 2px white;
+    padding: 20px;
+    border-radius: 20px;
+    font-family: "함초롬바탕"
+}
+.live3-1{
+    position: absolute;
+    top: 1140px;
+    right: 50px;
+    width: 100px;
+    height: 70px;
+    border-radius: 15px;
+}
+.live3-2{
+    position: absolute;
+    top: 1140px;
+    right: 50px;
+    width: 100px;
+    height: 70px;
+    border-radius: 15px;
+}
+.video3{
+    text-align: center;
+    letter-spacing: 50px; /* 글자간격을 설정 */
+}

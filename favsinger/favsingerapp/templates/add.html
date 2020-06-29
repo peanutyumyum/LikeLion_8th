@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추가하기</title>
+</head>
+<style>
+    body{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <form action="{% url 'add' %}" method="POST">
+        {% csrf_token %}
+        <p>가수명</p>
+        <input type="text" name="nameSinger">
+        <p>애정곡</p>
+        <input type="text" name="favSong1">
+        <p>뽀인트</p>
+        <input type="text" name="why">
+        <input type="submit" value="추가하기">
+    </form>
+</body>
+</html>

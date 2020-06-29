@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type="text/css" href="{% static 'home.css' %}">
+    <title>유튜브 채널 소개하기</title>
+</head>
+<body>
+    {% for youtube in youtube.all %}
+        <div class="channel"> 
+            <h1>{{youtube.name}}</h1> 
+            <p>🦁 Creator : {{youtube.creator}}</p>
+            {% if youtube.preference == 1 %}
+                <p>🦁 Preference : ⭐</p>
+            {% elif youtube.preference == 2 %}
+                <p>🦁 Preference : ⭐⭐</p>
+            {% elif youtube.preference == 3 %}
+                <p>🦁 Preference : ⭐⭐⭐</p>
+            {% elif youtube.preference == 4 %}
+                <p>🦁 Preference : ⭐⭐⭐⭐</p>
+            {% elif youtube.preference == 5 %}
+                <p>🦁 Preference : ⭐⭐⭐⭐⭐</p>
+            {% endif %}
+
+            {% if youtube.live == True %}
+                <img class="live1-1" src="../static/onAirRed.png">
+            {% else %}
+                <img class="live1-2" src="../static/onAirDark.jpg">    
+            {% endif %}
+
+            <p>🦁 Subscribers : {{youtube.subscribers}}</p>
+            <div class="video">
+                <iframe width="30%" height="270px" src= "{{youtube.link1}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="30%" height="270px" src= "{{youtube.link2}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="30%" height="270px" src= "{{youtube.link3}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <a href="{% url 'detail' youtube.id %}">자세히 보기</a>
+        <div class="button_box" aliign="right">
+            <button class="button" name="Charge">수정</button>
+            <button class="button" name="Delete">삭제</button>
+        </div>
+    {% endfor %}
+    <a href="{% url 'new' %}">
+        <button class="button" name="creator">새로운 내용 입력하기</button>
+    </a>
+ 
+    <br><br> 
+</body>
+</html>

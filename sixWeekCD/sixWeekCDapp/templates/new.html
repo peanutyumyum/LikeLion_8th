@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>새로 입력하기</title>
+</head>
+<body>
+    <form action="{% url 'create' %}" method="POST">
+        {% csrf_token %}
+        <p>유튜브 이름</p>
+        <input type="text" name="name">
+        <p>크리에이터 이름</p>
+        <input type="text" name="creator">
+        <p>구독자 수</p>
+        <input type="intger" name="subscribers">
+        <p>선호도</p>
+        <input type="intger" name="preference">
+        <p>추천영상1</p>
+        <textarea cols=30 rows=1 name="link1"></textarea>
+        <p>추천영상2</p>
+        <textarea cols=30 rows=1 name="link2"></textarea>
+        <p>추천영상3</p>
+        <textarea cols=30 rows=1 name="link3"></textarea>
+        <p>유튜브 요약</p>
+        <textarea cols=40 rows=3 name="summary"></textarea>
+        <p>유튜브 소개</p>
+        <textarea cols=100 rows=10 name="text"></textarea>
+        <p>라이브 여부</p>
+        <p>예</p><input type="radio" name="live" value="True">
+        <p>아니요</p><input type="radio" name="live" value="False">
+        <input class="button" type="submit" value="작성하기">
+        <input name = "photo" type="file">
+    </from>
+</body>
+</html>

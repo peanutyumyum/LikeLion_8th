@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for youtube in youtube.all %}
+    <h1>{{youtube.name}}</h1>
+    <p>{{youtube.creator}}</p>
+    <p>{{youtube.subscibers}}</p>
+    <p>{{youtube.preference}}</p>
+    <p>{{youtube.live}}</p>
+    <p>{{youtube.link1}}</p>
+    <p>{{youtube.link2}}</p>
+    <p>{{youtube.link3}}</p>
+    <p>{{youtube.text}}</p>
+    <p>{{youtube.summary}}</p>
+    <p><img src="{{youtube.photo.url}}"></p>
+    <a href="{% url 'detail' youtube.id %}">자세히 보기</a>
+    <button class="button" name="Charge">수정</button>
+    <button class="button" name="Delete">삭제</button>
+    {% endfor %}
+    <a href="{% url 'new' %}">
+        <button class="button" name="creator">새로운 내용 입력하기</button>
+    </a>
+</body>
+</html>

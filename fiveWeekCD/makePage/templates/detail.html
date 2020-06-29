@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자세히 보기</title>
+</head>
+<body>
+    <div class="channel"> 
+        <h1>🦁 Creator : {{youtube.name}}</h1> 
+        <p>{{youtube.creator}}</p>
+        {% if youtube.preference == 1 %}
+            <p>🦁 Preference : ⭐</p>
+        {% elif youtube.preference == 2 %}
+            <p>🦁 Preference : ⭐⭐</p>
+        {% elif youtube.preference == 3 %}
+            <p>🦁 Preference : ⭐⭐⭐</p>
+        {% elif youtube.preference == 4 %}
+            <p>🦁 Preference : ⭐⭐⭐⭐</p>
+        {% elif youtube.preference == 5 %}
+            <p>🦁 Preference : ⭐⭐⭐⭐⭐</p>
+        {% endif %}
+
+        {% if youtube.live == True %}
+            <img class="live3-1" src="../static/onAirRed.png">
+        {% else %}
+            <img class="live3-2" src="../static/onAirDark.jpg">
+        {% endif %}
+
+        <p>🦁 Subscribers : {{youtube.subscribers}}</p>
+        <div class="video">
+            <iframe width="30%" height="270px" src= "{{youtube.link1}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="30%" height="270px" src= "{{youtube.link2}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="30%" height="270px" src= "{{youtube.link3}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+</html>

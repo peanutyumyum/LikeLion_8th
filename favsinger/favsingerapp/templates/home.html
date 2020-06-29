@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    <title>좋아하는 가수 홈페이지</title>
+{% endblock title %}
+
+{% block contents %}
+    <a href="{% url 'add' %}">추가하기</a>
+    {% for i in home_key.all %}
+        <a href="{% url 'detail' i.id %}">{{i.singerName}}</a>
+    {% endfor %}
+{% endblock contents %}
