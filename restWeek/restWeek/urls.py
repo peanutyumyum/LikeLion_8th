@@ -15,11 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from albumGallery import views
 import albumGallery.views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', albumGallery.views.home, name='home'),
+    path('add/', albumGallery.views.add, name="add"),
+    path('change/<int:change_id>', albumGallery.view.change, name="change"),
+    path('delete/<int:delete_id>', albumGallery.views.delete, name ="delete"),
 ]
 
-
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

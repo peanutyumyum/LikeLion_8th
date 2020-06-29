@@ -5,7 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>엘범아트 전시</title>
 </head>
+<style>
+    body{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 <body>
-    hi
+    {% for i in myAlbum_obj %}
+    <h1>{{myAlbum_obj.name}}</h1>
+    <p>{{myAlbum_obj.artist}}</p>
+    <p>{{myAlbum_obj.release}}</p>
+    <p>{{myAlbum_obj.playTime}}</p>
+    <p>{{myAlbum_obj.genre}}</p>
+    <p>{{myAlbum_obj.desription}}</p>
+    <p><img src="{{myAlbum_obj.albumArt.url}}"></p>
+    
+    <a href="{% url 'change' i.id %}">
+        <button class="button" name="change">수정</button>
+    </a>
+    <a href="{% url 'delete' i.id %}">
+        <button class="button" name="delete">삭제</button>
+    </a>
+    {% endfor %}
+    <a href="{% url 'add' %}">
+        <button class="button" name="add">새로운 내용 입력하기</button>
+    </a>
 </body>
 </html>
