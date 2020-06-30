@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for i in sheets_row %}
+        {% if i.orderId == 2 %}
+            <h3>{{i.goodsId.goodsName}} {{i.goodsId.goodsPrice}} {{i.memberId.memberName}} {{i.memberId.home}}</h3>
+        {% else %}
+            
+        {% endif %}
+        <h3>{{i.orderId.orderId}}. {{i.goodsId.goodsName}} {{i.goodsId.goodsPrice}} {{i.memberId.memberName}} {{i.memberId.home}}</h3>
+    {% endfor %}
+</body>
+</html>
