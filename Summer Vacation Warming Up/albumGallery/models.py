@@ -8,7 +8,7 @@ class myAlbum (models.Model):
     name = models.CharField(max_length=30)
     artist = models.CharField(max_length=30)
     release = models.DateTimeField(default=datetime.now, blank=True)
-    playTime = models.IntegerField()
+    playTime = models.TextField()
     genre = models.TextField()
     albumArt = models.ImageField(upload_to="image", blank=True)
     description = models.TextField()

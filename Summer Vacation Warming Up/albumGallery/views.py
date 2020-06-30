@@ -36,10 +36,10 @@ def change(request, change_id):
         change_obj.name = request.POST['name']
         change_obj.artist = request.POST['artist']
         change_obj.release = request.POST['release']
-        change_obj.playTime = request.POST['playTime']
-        change_obj.genre = request.POST['genre']
+        change_obj.playTime = request.POST.get('playTime',False)
+        change_obj.genre = request.POST.get('genre',False)
         change_obj.albumArt = request.FILES['albumArt']
-        change_obj.desription = request.POST['description']
+        change_obj.desription = request.POST.get('description',False)
         change_obj.save()
         return redirect(reverse('home'))
     else:
