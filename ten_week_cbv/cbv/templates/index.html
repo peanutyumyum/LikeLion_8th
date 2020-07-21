@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'result' %}" method="GET"> <!-- action은 항상 보내는 것임 -->
+        <input type="text" name="query" value="{{query}}" placeholder="검색해보자">
+    </form>
+    {% for i in blog_list %}
+        <a href="{% url 'detail' i.id %}">
+        <h1>글 제목 : {{i.title}}</h1>
+        <p>글쓴이 : {{i.author}}</p>
+        <p>작성시간 : {{i.time}}</p>
+        </a>
+    {% endfor %}
+</body>
+</html>
