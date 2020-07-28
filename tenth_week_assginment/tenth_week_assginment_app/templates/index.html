@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type="text/css" href="static/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "container">
+        <div class = "top">
+            <div class = "title">
+                <h1>Book list</h1>
+            </div>
+            <div class = "search">
+                <form action ="{% url 'result' %}" method='GET'>
+                    <input type="text" id = "search content" name="query" value="{{query}}" placeholder="검색할 내용을 입력하세요">
+                    <select name = "categorize contents">
+                        <option value="all">전체 검색</option>
+                        <option value="title">제목으로 검색</option>
+                        <option value="content">내용으로 검색</option>
+                        <option value="author">글쓴이로 검색</option>
+                    </select>
+                </form>
+            </div>
+            <div id = "username">
+                <p>{{user}}님 오늘도 좋은 하루입니다!</p>
+            </div>
+        </div>
+        <div class = "bottom">
+            {% for search_content in blog_list %}
+            <a href="{% url 'detail' search_content.id %}">
+                <h1>글 제목 - {{search_content.title}}</h1>
+                <h2>내용 - {{search_content.text}}</h2>
+                <p>글쓴이 : {{search_content.author}}</p>
+                <p>작성 날짜 : {{search_content.time}}</p>
+        </a>
+        <br>
+        {% endfor %}
+        </div>
+        <div class = "create new">
+            <a href="{% url 'create' %}">새글쓰기</a>
+        </div>
+    </div>
+
+</body>
+</html>
