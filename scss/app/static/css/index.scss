@@ -1,0 +1,24 @@
+@charset 'utf-8';
+@import "_variables";
+@import "_mixins";
+@import "_button";
+
+body > *{
+    all: unset;
+}
+
+h1{
+    color: red;
+    @include responsive("iphone"){
+        color: yellow;
+    }
+    @include responsive("ipad"){
+        color: purple;
+    }
+    @include responsive("iphone-l"){
+        color: royalblue;
+    }
+    @include responsive("ipad-l"){
+        color: green;
+    }
+}

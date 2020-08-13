@@ -39,7 +39,7 @@ def melon_crawling():
         album_arts.append(i.get("src"))
 
     sum_list = list(zip(songs, artists, albums, album_arts)) # zip 함수는 리스트를 합쳐줌
-    return(sum_list) # 최종적으로 sum_list를 뱉어냄
+    return sum_list # 최종적으로 sum_list를 뱉어냄
 
 if __name__ == '__main__':
     melon_data_list = melon_crawling()
