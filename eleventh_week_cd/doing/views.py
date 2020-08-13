@@ -11,7 +11,7 @@ def index(request):
 def create(request):
     if request.method == "POST":
         filled_form = JssForm(request.POST)
-        if filled_form.is_valid():
+        if filled_form.is_valid(): # is_valid 는 유효성 검사를 하는 함수이다. 문제가 없을 때 밑에 save 함수를 통해 저장함
             filled_form.save()
             return redirect('index')
     jss_form = JssForm()

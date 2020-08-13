@@ -8,8 +8,8 @@
 <body>
     <form method="POST" action="">
         {% csrf_token %}
-        {{jss_form.as_p}}
-        <input type="submit" value="확인">
+        {{jss_form.as_p}} <!-- .as_p 는 가져온 내용을 p테그로 감싸준다는 의미이다. -->
+        <input type="submit" value="확인"> <!-- submmit할 경우 views에 있는 함수를 실행시켜줌 -->
     </form>
 </body>
 </html>
