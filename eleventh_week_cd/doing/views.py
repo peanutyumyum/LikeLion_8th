@@ -16,7 +16,7 @@ def create(request):
             filled_form.save()
             return redirect('index')
     jss_form = JssForm()
-    return render(request, 'create/html', {'jss_form':jss_form })
+    return render(request, 'create.html', {'jss_form':jss_form })
 
 def detail(request, jss_id):
     try: # try는 일단 시도해봐라

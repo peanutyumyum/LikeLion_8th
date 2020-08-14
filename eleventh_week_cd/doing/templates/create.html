@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action="">
+    <form method="POST" action=""> <!-- method를 따로 설정하지 않을 경우 GET방식을 사용하게 된다. 이때 POST방식을 사용하면 조금의 보안상 이득을 얻을 수 있다. action에 들어가는 것은 사용할 함수를 의미 하는 것이다. 여기서 공백을 하면 이 페이지를 로드할 때 사용한 함수를 그대로 사용하게 된다. -->
         {% csrf_token %}
         {{jss_form.as_p}} <!-- .as_p 는 가져온 내용을 p테그로 감싸준다는 의미이다. -->
         <input type="submit" value="확인"> <!-- submmit할 경우 views에 있는 함수를 실행시켜줌 -->
