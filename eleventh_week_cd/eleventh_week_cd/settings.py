@@ -122,3 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGIN_REDIRECT_URL = '/' # 로그인 기능을 Django가 제공하는 기능을 이용하였는데, 거기에는 로그인 성공시 가야하는 경로를 settings.py에 적어줄 것을 요청하고 있다.
+
+LOGOUT_REDIRECT_URL = '/'
