@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: auto;
+            border: 1px solid black;
+        }
+        .content{
+            margin: 10px;
+        }
+        .author {
+            font-size: 20px;
+        }
+        .comment{
+            width: auto;
+            height: auto;
+            padding: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='box'>
+        <div class="content">
+            <p> {{ppost.id}}번째 글</p>
+            <h2>{{ppost.title}}</h2>
+            <p class="author">by. {{ppost.author}}</p>
+            <p class="body">{{ppost.content}}</p>
+        </div>
+
+        <div class="comment">
+            <p>댓글</p>
+            <form method="POST" action="{% url 'comment_create' ppost.id %}">
+                {% csrf_token %}
+                {{form.as_p}}
+                <br>
+                <input type="submit" value="입력하기">
+            </form>
+            {% for comments in comment %}
+                <span>{{comments.author}}</span>
+                <span>{{comments.create}}</span>
+                <p>{{comments}}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+    {%  if messages %}
+        {% for text in messages %}
+            alert("{{text.message}}");
+        {% endfor %}
+    {% endif %}
+</script>
+
+</html>
