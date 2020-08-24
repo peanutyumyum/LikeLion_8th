@@ -1,5 +1,5 @@
 from django import forms
-from .models import Jasoseol
+from .models import Jasoseol, Comment
 
 class JssForm(forms.ModelForm):
 
@@ -15,3 +15,11 @@ class JssForm(forms.ModelForm):
             'class' : 'jss_title', # title 이라는 form에 class의 이름을 생성해줌
             'placeholder' : '제목'
         })
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ('content', )
+
+        
