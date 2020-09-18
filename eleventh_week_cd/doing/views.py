@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Jasoseol
-from .forms import JssForm
+from .models import Jasoseol, Comment
+from .forms import JssForm, CommentForm
 from django.http import Http404
+from django.core.exceptions import PermissionDenied
 
 # Create your views here.
 
@@ -26,7 +27,9 @@ def detail(request, jss_id):
     # or 
     # my_jss = get_object_or_404(Jasoseol, pk=jss_id)
 
-    return render(request, 'detail.html', {'my_jss' : my_jss})
+    comment_form = CommentForm()
+
+    return render(request, 'detail.html', {'my_jss' : my_jss, 'comment_form' : comment_form})
 
 
 
@@ -45,3 +48,21 @@ def delete(request, jss_id):
     my_jss = Jasoseol.objects.get(pk=jss_id)
     my_jss.delete()
     return redirect('index.html')
+
+def create_comment(request, jss_id):
+    comment = CommentForm(request.POST)
+    if request.method == "POST":
+        if CommentForm.is_valid():
+            temp_form = CommentForm.save(commit=False)
+            temp_form.author == request.user
+            temp_form.post == Jasoseol.objects.get(pk=jss_id)
+            temp_form.save()
+            return redirect('detail', jss_id) # url이름과 pk값을 이런식으로 같이 줄 수 있다.
+
+def delete_comment(request, jss_id, comment_id):
+    my_comment = Comment.objects.get(pk=comment_id)
+    if request.user == my_comment.author:
+        my_comment.delete()
+        return redirect('detail', jss_id)
+    else:
+        raise PermissionDenied

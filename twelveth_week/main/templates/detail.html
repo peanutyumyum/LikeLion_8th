@@ -23,6 +23,9 @@
             padding: 10px;
             border: 1px solid black;
         }
+        #form{
+            display: none;
+        }
     </style>
 </head>
 
@@ -47,17 +50,36 @@
                 <span>{{comments.author}}</span>
                 <span>{{comments.create}}</span>
                 <p>{{comments}}</p>
+                {% if user == comments.author %}
+                    <button id="edit" onclick=openForm();>수정하러가기</button>
+                <div id="form">
+                    <form method="POST" action="{% url 'comment_update' comments.id ppost.id %}">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <input type="submit" value="수정하기">
+                    </form>
+                </div>
+                <p>
+                    <a href="{% url 'comment_delete' comments.id ppost.id %}">
+                        <button>삭제</button>
+                    </a>
+                </p>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
-
-</body>
 <script type="text/javascript">
+    function openForm(){
+        console.log('sss');
+        var form = document.getElementById('form');
+        form.style.display = 'block';
+    }
     {%  if messages %}
         {% for text in messages %}
             alert("{{text.message}}");
         {% endfor %}
     {% endif %}
 </script>
+</body>
 
 </html>

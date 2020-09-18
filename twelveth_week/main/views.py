@@ -1,7 +1,9 @@
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 from .models import Post, Comment
 from .forms import CommentForm
 
@@ -35,3 +37,24 @@ def comment_create(request, post_id):
     else:
         messages.info(request, "삐빅 로그인을 안하셨군요")
     return HttpResponseRedirect(reverse('detail', args=(post_id,)))
+
+def comment_update(request, comment_id, post_id):
+    comment_model = Comment.objects.get(pk=comment_id)
+    if request.user == comment_model.author:
+        updated_form = CommentForm(request.POST)
+        if updated_form.is_valid():
+            comment_model.delete()
+            update_comment = updated_form.save(commit=False)
+            update_comment.author = request.user
+            update_comment.post_id = post_id
+            update_comment.save()
+            return redirect('detail', post_id)
+
+
+def comment_delete(request, comment_id, post_id):
+    comment_model = Comment.objects.get(pk=comment_id)
+    if request.user == comment_model.author:
+        comment_model.delete()
+        return redirect('detail', post_id)
+    else:
+        raise PermissionDenied
